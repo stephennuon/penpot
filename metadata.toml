@@ -1,0 +1,5 @@
+version = "v2"
+
+description = "penpot Demo"
+display_name = "The simplest penpot demo"
+readme       = "./readme.md"
