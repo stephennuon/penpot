@@ -2,25 +2,15 @@
 ## Default values for Penpot
 
 global:
-  # -- Whether to deploy the Bitnami PostgreSQL chart as subchart. Check [the official chart](https://artifacthub.io/packages/helm/bitnami/postgresql) for configuration.
-  # @section -- Global parameters
   postgresqlEnabled: true
-  # -- Whether to deploy the Bitnami Valkey chart as subchart. Check [the official chart](https://artifacthub.io/packages/helm/bitnami/valkey) for configuration.
-  # @section -- Global parameters
   valkeyEnabled: true
-  # -- Whether to deploy the Bitnami Redis chart as subchart. Check [the official chart](https://artifacthub.io/packages/helm/bitnami/redis) for configuration.
-  # *DEPRECATION WARNING: Since Penpot 2.8, Penpot has migrated from Redis to Valkey. Although migration is recommended, Penpot will work seamlessly with compatible Redis versions. 
-  # @section -- Global parameters
-  
 
 persistence:
   assets:
-    # -- Enable assets persistence using Persistent Volume Claims.
-    # @section -- Persistence parameters
     enabled: true
 
-#config:
-  #publicUri: "http://penpot.{{.nuon.install.sandbox.outputs.nuon_dns.public_domain.name}}"
+config:
+  publicUri: "https://penpot.{{.nuon.install.sandbox.outputs.nuon_dns.public_domain.name}}"
 
 ingress:
   enabled: false
