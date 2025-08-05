@@ -18,4 +18,24 @@ persistence:
     # -- Enable assets persistence using Persistent Volume Claims.
     # @section -- Persistence parameters
     enabled: true
-   
+
+#config:
+  #publicUri: "http://penpot.{{.nuon.install.sandbox.outputs.nuon_dns.public_domain.name}}"
+
+ingress:
+  enabled: false
+
+backend:
+  service:
+    type: ClusterIP
+    port: 6060
+  env:
+    PENPOT_PUBLIC_URI: "https://penpot.{{.nuon.install.sandbox.outputs.nuon_dns.public_domain.name}}"
+    PENPOT_BACKEND_URI: "https://penpot-backend.{{.nuon.install.sandbox.outputs.nuon_dns.public_domain.name}}"
+    
+frontend:
+  service:
+    type: ClusterIP
+    port: 8080
+  env:
+    PENPOT_BACKEND_URI: "https://penpot-backend.{{.nuon.install.sandbox.outputs.nuon_dns.public_domain.name}}"
